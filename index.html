@@ -1,33 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lilith Scanlations</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --bg-color: #0f0f0f;
+      --text-color: #f2f2f2;
+      --accent-color: #a084ca;
+      --card-bg: #1c1c1c;
+      --hover-color: #c2aaff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #1a1a1a;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+    }
+
+    header .logo {
+      font-size: 1.8rem;
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--hover-color);
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 0.6rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card h3 {
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1a1a1a;
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 4rem;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <img src="assets/logo-placeholder.png" alt="Lilith Scanlations Logo" class="logo" />
+    <div class="logo">Lilith Scanlations</div>
     <nav>
       <ul>
-        <li><a href="index.html">Latest Updates</a></li>
-        <li><a href="projects.html">Our Projects</a></li>
-        <li><a href="join.html">Join Us</a></li>
-        <li><a href="suggest.html">Suggestions</a></li>
+        <li><a href="#">Latest Updates</a></li>
+        <li><a href="#">Our Projects</a></li>
+        <li><a href="#">Join Us</a></li>
+        <li><a href="#">Suggestions</a></li>
       </ul>
     </nav>
   </header>
+
   <main>
-    <h1>Latest Updates</h1>
-    <ul>
-      <li><a href="read.html?series=viper&num=1">Viper — Chapter 1</a> [May 2025]</li>
-      <li><a href="read.html?series=ghostflower&num=3">Ghost Flower — Chapter 3</a> [May 2025]</li>
-    </ul>
+    <section>
+      <h2 class="section-title">Latest Updates</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Viper - Chapter 5</h3>
+          <p>Released May 2025. Our MC gets trapped in the underground arena.</p>
+        </div>
+        <div class="card">
+          <h3>Ghost Flower - Chapter 8</h3>
+          <p>Taizi Gege makes his shocking return! This chapter is 🔥</p>
+        </div>
+        <div class="card">
+          <h3>New Project: Crimson Bells</h3>
+          <p>A haunting new BL fantasy series. Chapter 1 is out now!</p>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer>
-    <p>&copy; 2025 Lilith Scanlations. For archival purposes only.</p>
-    <p><a href="https://discord.gg/yourserver">Join our Discord</a></p>
+    <p>&copy; 2025 Lilith Scanlations. Fan project for archival only. Contact us on Discord.</p>
   </footer>
 </body>
 </html>
