@@ -4,315 +4,397 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lilith v2</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Root colors */
     :root {
-      --bg-color: #1b0e3a;
-      --primary-color: #7f5af0;
-      --accent-color: #f0c3fc;
-      --text-color: #f9f6ff;
-      --shadow-color: rgba(127, 90, 240, 0.4);
-      --star-color: #e9d5ff;
+      --pink-light: #ffd6e8;
+      --pink-soft: #ff9ccf;
+      --cream: #fff7f8;
+      --gold: #d9a441;
+      --text-primary: #5c374c;
+      --card-bg: #fff1f3;
+      --shadow-color: rgba(217, 164, 65, 0.3);
+      --button-hover-bg: #ff7eb9;
+      --button-text-hover: #fff;
+      --sparkle-color: #ffd6e8;
     }
 
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background: radial-gradient(circle at center, #2a1764 0%, #0d0623 90%);
-      font-family: 'Poppins', sans-serif;
-      color: var(--text-color);
+      background: linear-gradient(135deg, var(--pink-light) 0%, var(--cream) 100%);
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-primary);
       min-height: 100vh;
-      overflow-x: hidden;
+      padding: 3rem 1rem 5rem;
       position: relative;
-      padding-bottom: 4rem;
+      overflow-x: hidden;
     }
 
-    /* Star sparkle animation */
-    .star {
+    /* Sparkle animation */
+    .sparkle {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--star-color);
+      width: 6px;
+      height: 6px;
+      background: var(--sparkle-color);
       border-radius: 50%;
+      box-shadow: 0 0 8px var(--sparkle-color);
+      animation: twinkle 3s infinite alternate ease-in-out;
       opacity: 0.8;
-      animation: sparkle 3s infinite alternate ease-in-out;
-      box-shadow: 0 0 10px var(--star-color);
+      filter: drop-shadow(0 0 2px var(--sparkle-color));
+      z-index: 0;
     }
-    @keyframes sparkle {
-      0% {opacity: 0.3; transform: scale(0.6);}
-      50% {opacity: 1; transform: scale(1.2);}
-      100% {opacity: 0.3; transform: scale(0.6);}
+    @keyframes twinkle {
+      0% {opacity: 0.3; transform: scale(0.7);}
+      50% {opacity: 1; transform: scale(1.3);}
+      100% {opacity: 0.3; transform: scale(0.7);}
     }
 
     /* Header */
     header {
+      font-family: 'Parisienne', cursive;
+      font-size: 3.5rem;
+      color: var(--pink-soft);
       text-align: center;
-      padding: 2rem 1rem 1rem;
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: var(--accent-color);
-      text-shadow: 0 0 10px var(--primary-color);
-      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 6px var(--gold);
       user-select: none;
+      letter-spacing: 0.04em;
     }
 
     /* Navigation */
     nav {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
       font-weight: 600;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      user-select: none;
     }
     nav a {
-      color: var(--accent-color);
       text-decoration: none;
-      font-size: 1.1rem;
-      padding: 0.5rem 1.25rem;
-      border-radius: 30px;
-      background: transparent;
-      box-shadow: inset 0 0 0 2px var(--primary-color);
-      transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
+      padding-bottom: 4px;
+      color: var(--text-primary);
+      transition: color 0.3s ease;
     }
-    nav a::before {
+    nav a::after {
       content: '';
       position: absolute;
-      left: 50%;
-      top: 50%;
       width: 0;
-      height: 0;
-      background: var(--primary-color);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.4s ease, height 0.4s ease;
-      z-index: -1;
+      height: 2px;
+      background: var(--pink-soft);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+      border-radius: 2px;
     }
-    nav a:hover {
-      color: #fff;
-      box-shadow: inset 0 0 10px 4px var(--accent-color);
+    nav a:hover,
+    nav a:focus {
+      color: var(--pink-soft);
     }
-    nav a:hover::before {
-      width: 200%;
-      height: 500%;
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
     }
 
-    /* Latest Updates Section */
+    /* Updates container */
     .updates {
+      max-width: 960px;
+      margin: 0 auto 4rem;
       display: flex;
-      justify-content: center;
       gap: 2rem;
-      padding: 0 1rem;
       flex-wrap: wrap;
-      max-width: 1000px;
-      margin: 0 auto 3rem;
-    }
-    .card {
-      background: #3b2574;
-      border-radius: 15px;
-      width: 300px;
-      box-shadow: 0 0 15px var(--shadow-color);
-      overflow: hidden;
-      cursor: pointer;
+      justify-content: center;
       position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+    }
+
+    /* Card style */
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      width: 280px;
+      box-shadow: 0 0 20px var(--shadow-color);
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      border: 3px solid transparent;
     }
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 25px var(--accent-color);
+      transform: scale(1.06);
+      box-shadow: 0 0 30px var(--pink-soft);
+      border-color: var(--pink-soft);
+      z-index: 5;
     }
+
+    /* Floating sparkles on card */
+    .card .sparkle-small {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--pink-soft);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--pink-soft);
+      animation: twinkle 3s infinite alternate ease-in-out;
+      opacity: 0.7;
+      filter: drop-shadow(0 0 1.5px var(--pink-soft));
+      pointer-events: none;
+    }
+
+    .sparkle-top-left {
+      top: 12px;
+      left: 10px;
+      animation-delay: 0s;
+    }
+    .sparkle-top-right {
+      top: 22px;
+      right: 18px;
+      animation-delay: 1.2s;
+    }
+    .sparkle-bottom-left {
+      bottom: 20px;
+      left: 14px;
+      animation-delay: 2.4s;
+    }
+    .sparkle-bottom-right {
+      bottom: 15px;
+      right: 14px;
+      animation-delay: 1.8s;
+    }
+
+    /* Card image */
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       display: block;
-    }
-    .card-content {
-      padding: 1rem 1.25rem 1.5rem;
-      color: var(--accent-color);
-      text-align: center;
-    }
-    .card-content h3 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 1.7rem;
-      margin-bottom: 0.3rem;
-      text-shadow: 0 0 5px var(--primary-color);
-    }
-    .card-content p {
-      font-weight: 500;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      color: #d8c9fa;
-      text-shadow: 0 0 3px #573d91;
-    }
-    .read-btn {
-      display: inline-block;
-      background: var(--primary-color);
-      color: white;
-      padding: 0.45rem 1.2rem;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 1rem;
-      box-shadow: 0 0 10px var(--accent-color);
-      text-decoration: none;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-    .read-btn:hover {
-      background: var(--accent-color);
-      color: #1b0e3a;
-      box-shadow: 0 0 20px var(--primary-color);
+      border-bottom: 2px solid var(--pink-soft);
+      border-radius: 0 0 20px 20px;
     }
 
-    /* Welcome Section */
+    /* Card content */
+    .card-content {
+      padding: 1.5rem 1.75rem 2rem;
+      text-align: center;
+      color: var(--text-primary);
+    }
+    .card-content h3 {
+      font-family: 'Parisienne', cursive;
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+      color: var(--pink-soft);
+      text-shadow: 0 0 5px var(--gold);
+    }
+    .card-content p {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      color: #a8517d;
+    }
+
+    /* Read button */
+    .read-btn {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--pink-soft);
+      border: 2.5px solid var(--pink-soft);
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s ease, border-color 0.4s ease;
+    }
+    .read-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 100%;
+      background: var(--pink-soft);
+      transform: translate(-50%, -50%) rotate(25deg);
+      transition: width 0.4s ease;
+      z-index: -1;
+      border-radius: 30px;
+    }
+    .read-btn:hover,
+    .read-btn:focus {
+      color: var(--cream);
+      border-color: var(--gold);
+    }
+    .read-btn:hover::before,
+    .read-btn:focus::before {
+      width: 140%;
+      box-shadow: 0 0 20px var(--gold);
+    }
+
+    /* Welcome section */
     .welcome {
       max-width: 720px;
-      margin: 0 auto 4rem;
-      background: #341f77;
-      border-radius: 20px;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 0 30px var(--shadow-color);
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 2.5rem 3rem;
+      border-radius: 25px;
+      box-shadow: 0 0 20px var(--shadow-color);
       font-size: 1rem;
-      line-height: 1.5;
-      color: #e3d5ff;
-      font-weight: 500;
-      text-align: center;
+      line-height: 1.6;
+      color: var(--text-primary);
       user-select: text;
+      text-align: center;
+      font-weight: 500;
     }
     .welcome h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.4rem;
+      font-family: 'Parisienne', cursive;
+      font-size: 2.8rem;
       margin-bottom: 1rem;
-      color: var(--accent-color);
-      text-shadow: 0 0 8px var(--primary-color);
+      color: var(--pink-soft);
+      text-shadow: 0 0 5px var(--gold);
     }
     .welcome h3 {
-      margin-top: 1.5rem;
-      color: #b48ddb;
-      font-weight: 700;
-      text-shadow: 0 0 5px #5c3a8a;
+      font-family: 'Parisienne', cursive;
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      color: var(--pink-soft);
+      text-shadow: 0 0 4px var(--gold);
     }
     .welcome ul {
       text-align: left;
-      max-width: 580px;
-      margin: 1rem auto 0;
-      padding-left: 1.25rem;
-      list-style-type: disc;
-      color: #cab9ff;
+      margin-top: 0.8rem;
+      color: #a8517d;
     }
     .welcome ul li {
       margin-bottom: 0.6rem;
+      font-weight: 600;
     }
 
     /* Footer */
     footer {
+      margin-top: 4rem;
       text-align: center;
-      padding: 1rem 1rem;
-      background: #230a49;
-      color: #bfaaff;
-      font-size: 0.9rem;
-      box-shadow: inset 0 1px 3px #3d2d76;
+      color: var(--pink-soft);
+      font-weight: 600;
+      font-size: 1rem;
       user-select: none;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-      left: 0;
+      text-shadow: 0 0 5px var(--gold);
     }
     footer a {
-      color: var(--accent-color);
-      text-decoration: underline;
+      color: var(--gold);
+      font-weight: 700;
+      text-decoration: none;
       transition: color 0.3s ease;
     }
-    footer a:hover {
-      color: var(--primary-color);
+    footer a:hover,
+    footer a:focus {
+      color: var(--pink-soft);
+      text-shadow: 0 0 6px var(--pink-soft);
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 700px) {
       .updates {
         flex-direction: column;
         align-items: center;
       }
-      nav {
-        gap: 1rem;
+      .card {
+        width: 90%;
+        max-width: 350px;
+      }
+      .welcome {
+        padding: 2rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Sparkling stars background -->
-  <div class="star" style="top:10%; left:20%; animation-delay: 0s;"></div>
-  <div class="star" style="top:30%; left:40%; animation-delay: 1.5s;"></div>
-  <div class="star" style="top:50%; left:70%; animation-delay: 0.9s;"></div>
-  <div class="star" style="top:80%; left:10%; animation-delay: 2.3s;"></div>
-  <div class="star" style="top:25%; left:80%; animation-delay: 1.2s;"></div>
 
-  <header>Lilith Scanlations</header>
-  <nav>
-    <a href="#">Latest Updates</a>
-    <a href="#">Our Projects</a>
-    <a href="#">Join Us</a>
-    <a href="#">Suggestions</a>
-  </nav>
+<header>Lilith Scanlations</header>
 
-  <section class="updates">
-    <div class="card">
-      <img src="https://via.placeholder.com/300x180?text=Moonlight+Love" alt="Moonlight Love" />
-      <div class="card-content">
-        <h3>Moonlight Love</h3>
-        <p>Chapter 15 - Sailor's Heart</p>
-        <a href="#" class="read-btn">Read</a>
-      </div>
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Series</a>
+  <a href="#">Recruitment</a>
+  <a href="#">FAQ</a>
+  <a href="#">Discord</a>
+</nav>
+
+<section class="updates" aria-label="Latest Updates">
+  <a href="#" class="card" aria-label="Read chapter 15 of Moonlight Love">
+    <img src="https://via.placeholder.com/280x180?text=Moonlight+Love" alt="Moonlight Love cover art" />
+    <span class="sparkle sparkle-top-left sparkle-small"></span>
+    <span class="sparkle sparkle-top-right sparkle-small"></span>
+    <span class="sparkle sparkle-bottom-left sparkle-small"></span>
+    <span class="sparkle sparkle-bottom-right sparkle-small"></span>
+    <div class="card-content">
+      <h3>Moonlight Love</h3>
+      <p>Chapter 15 - Sailor's Heart</p>
+      <span role="button" tabindex="0" class="read-btn">Read</span>
     </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/300x180?text=Star+Guardian" alt="Star Guardian" />
-      <div class="card-content">
-        <h3>Star Guardian</h3>
-        <p>Chapter 8 - Cosmic Secrets</p>
-        <a href="#" class="read-btn">Read</a>
-      </div>
+  </a>
+  <a href="#" class="card" aria-label="Read chapter 8 of Star Guardian">
+    <img src="https://via.placeholder.com/280x180?text=Star+Guardian" alt="Star Guardian cover art" />
+    <span class="sparkle sparkle-top-left sparkle-small"></span>
+    <span class="sparkle sparkle-top-right sparkle-small"></span>
+    <span class="sparkle sparkle-bottom-left sparkle-small"></span>
+    <span class="sparkle sparkle-bottom-right sparkle-small"></span>
+    <div class="card-content">
+      <h3>Star Guardian</h3>
+      <p>Chapter 8 - Cosmic Secrets</p>
+      <span role="button" tabindex="0" class="read-btn">Read</span>
     </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/300x180?text=Celestial+Wings" alt="Celestial Wings" />
-      <div class="card-content">
-        <h3>Celestial Wings</h3>
-        <p>Chapter 20 - Twilight Battle</p>
-        <a href="#" class="read-btn">Read</a>
-      </div>
+  </a>
+  <a href="#" class="card" aria-label="Read chapter 20 of Celestial Wings">
+    <img src="https://via.placeholder.com/280x180?text=Celestial+Wings" alt="Celestial Wings cover art" />
+    <span class="sparkle sparkle-top-left sparkle-small"></span>
+    <span class="sparkle sparkle-top-right sparkle-small"></span>
+    <span class="sparkle sparkle-bottom-left sparkle-small"></span>
+    <span class="sparkle sparkle-bottom-right sparkle-small"></span>
+    <div class="card-content">
+      <h3>Celestial Wings</h3>
+      <p>Chapter 20 - Twilight Battle</p>
+      <span role="button" tabindex="0" class="read-btn">Read</span>
     </div>
-  </section>
+  </a>
+</section>
 
-  <section class="welcome">
-    <h2>Welcome to Lilith Scanlations!</h2>
-    <p>
-      Lilith is a non-profit group working on BL (Boys Love) manga, manhwa, and manhua. We do not accept donations or payments, so please support the creators by purchasing the raws on official platforms like Ridibooks, Bomtoon, Bookcube, Peanutoon, Lezhin, etc.
-    </p>
-    <p>
-      You can learn about creating an account and getting adult access at some of these sites using the Buyer's Tutorial link in the above menu. If you have questions or the site you'd like to purchase from is not available there, you're welcome to ask us in our Discord server and we'll do our best to guide you!
-    </p>
-    <p>
-      The best way you can support our team is to join us! Refer to the recruitment page above for details. We really need Cleaner/Redrawers and Korean, Japanese Translators at this time~~
-    </p>
-    <p>
-      If you're unsure of something, you can refer to the frequently asked questions. If you see a bug or have issues with performance of the site, please reach out to us on Discord. We appreciate these reports.
-    </p>
-    <h3>Before You Proceed</h3>
-    <ul>
-      <li>DO NOT share this website or any projects, chapters, or screenshots containing unofficial translations publicly on social media.</li>
-      <li>DO NOT engage with the publisher, author, or artist unless you have purchased from the official sources and do not reference unofficial materials.</li>
-      <li>DO NOT repost our translations under any circumstances. Certain titles may only be posted here while others will appear on MangaDex with a delay.</li>
-    </ul>
-  </section>
+<section class="welcome" aria-label="Welcome Section">
+  <h2>Welcome to Lilith Scanlations!</h2>
+  <p>
+    Lilith is a non-profit group working on BL (Boys Love) manga, manhwa, and manhua. We do not accept donations or payments, so please support the creators by purchasing the raws on official platforms like Ridibooks, Bomtoon, Bookcube, Peanutoon, Lezhin, etc.
+  </p>
+  <p>
+    You can learn about creating an account and getting adult access at some of these sites using the Buyer's Tutorial link in the above menu. If you have questions or the site you'd like to purchase from is not available there, you're welcome to ask us in our Discord server and we'll do our best to guide you!
+  </p>
+  <p>
+    The best way you can support our team is to join us! Refer to the recruitment page above for details. We really need Cleaner/Redrawers and Korean, Japanese Translators at this time~~
+  </p>
+  <p>
+    If you're unsure of something, you can refer to the frequently asked questions. If you see a bug or have issues with performance of the site, please reach out to us on Discord. We appreciate these reports.
+  </p>
+  <h3>Before You Proceed</h3>
+  <ul>
+    <li>DO NOT share this website or any projects, chapters, or screenshots containing unofficial translations publicly on social media.</li>
+    <li>DO NOT engage with the publisher, author, or artist unless you have purchased from the official sources and do not reference unofficial materials.</li>
+    <li>DO NOT repost our translations under any circumstances. Certain titles may only be posted here while others will appear on MangaDex with a delay.</li>
+  </ul>
+</section>
 
-  <footer>
- All content are property of their original creators and publishers
-  </footer>
+<footer>
+All content are property of their original creators and publishers
+</footer>
+
 </body>
 </html>
