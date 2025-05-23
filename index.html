@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lilith Scanlations</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg-color: #0f0f0f;
       --text-color: #f2f2f2;
       --accent-color: #a084ca;
+      --accent-gradient: linear-gradient(135deg, #a084ca, #d9b3ff);
       --card-bg: #1c1c1c;
       --hover-color: #c2aaff;
+      --transition-speed: 0.3s;
     }
 
     * {
@@ -20,10 +26,13 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-color);
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -32,89 +41,217 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #333;
+      border-bottom: 2px solid var(--accent-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    header .logo {
+    .logo {
       font-size: 1.8rem;
-      color: var(--accent-color);
-      font-weight: bold;
+      font-weight: 600;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: default;
+      user-select: none;
+    }
+
+    nav {
+      position: relative;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.2rem;
+      gap: 1.5rem;
     }
 
     nav a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s;
+      position: relative;
+      transition: color var(--transition-speed);
     }
 
-    nav a:hover {
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-color);
+      transition: width var(--transition-speed);
+      border-radius: 2px;
+    }
+
+    nav a:hover,
+    nav a:focus {
       color: var(--hover-color);
     }
 
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    /* Hamburger menu */
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 26px;
+      height: 20px;
+      justify-content: space-between;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      background: var(--text-color);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* When active, animate hamburger to X */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Mobile nav styles */
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--card-bg);
+        flex-direction: column;
+        width: 180px;
+        border-radius: 0 0 6px 6px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+      }
+
+      nav ul.open {
+        max-height: 300px;
+      }
+
+      nav li {
+        border-bottom: 1px solid #333;
+      }
+
+      nav li:last-child {
+        border-bottom: none;
+      }
+
+      nav a {
+        padding: 12px 20px;
+        display: block;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
     main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
+      padding: 2.5rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-grow: 1;
+      user-select: none;
     }
 
     .section-title {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       margin-bottom: 1rem;
-      border-left: 4px solid var(--accent-color);
-      padding-left: 0.6rem;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 0.8rem;
     }
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.6rem;
       margin-top: 1rem;
     }
 
     .card {
       background-color: var(--card-bg);
-      border-radius: 0.5rem;
-      padding: 1rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s;
+      border-radius: 8px;
+      padding: 1.2rem 1rem;
+      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      user-select: none;
     }
 
     .card:hover {
-      transform: scale(1.03);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(162, 132, 202, 0.7);
     }
 
     .card h3 {
       color: var(--accent-color);
       margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 1.2rem;
     }
 
     .card p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      line-height: 1.3;
       opacity: 0.9;
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.2rem 1rem;
       background-color: #1a1a1a;
-      font-size: 0.8rem;
-      color: #999;
-      margin-top: 4rem;
+      font-size: 0.85rem;
+      color: #888;
+      user-select: none;
+      border-top: 1px solid #333;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 8px;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover,
+    footer a:focus {
+      color: var(--hover-color);
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">Lilith Scanlations</div>
+
+    <div class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <nav>
-      <ul>
+      <ul id="navLinks">
         <li><a href="#">Latest Updates</a></li>
         <li><a href="#">Our Projects</a></li>
         <li><a href="#">Join Us</a></li>
@@ -144,7 +281,30 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Lilith Scanlations. Fan project for archival only. Contact us on Discord.</p>
+    <p>© 2025 Lilith Scanlations. Fan project for archival only.</p>
+    <p>
+      Join our Discord:
+      <a href="#" target="_blank" rel="noopener noreferrer">discord.gg/yourinvite</a> |
+      <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a> |
+      <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </p>
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      menuToggle.classList.toggle('active');
+    });
+
+    menuToggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuToggle.click();
+      }
+    });
+  </script>
 </body>
 </html>
