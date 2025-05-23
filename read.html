@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Read - Lilith Scanlations</title>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const series = urlParams.get('series');
+    const num = urlParams.get('num');
+    const container = document.getElementById('viewer');
+
+    for (let i = 1; i <= 10; i++) {
+      const img = document.createElement('img');
+      img.src = `series/${series}/${num}/${String(i).padStart(3, '0')}.jpg`;
+      img.onerror = () => img.remove();
+      container.appendChild(img);
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="viewer"></div>
+</body>
+</html>
