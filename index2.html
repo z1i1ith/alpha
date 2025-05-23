@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lilith Scanlations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #b38aff;
+      --bg: #121212;
+      --card: #1e1e1e;
+      --text: #f4f4f4;
+      --muted: #aaa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #191919, #2b2b2b);
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid #2e2e2e;
+    }
+
+    header h1 {
+      color: var(--accent);
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .hero h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+    }
+
+    .latest-updates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .latest-update-card {
+      background-color: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .latest-update-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .latest-update-card img {
+      width: 100%;
+      height: auto;
+      max-height: 180px;
+      object-fit: cover;
+    }
+
+    .latest-update-card-content {
+      padding: 1rem;
+    }
+
+    .latest-update-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .read-button {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .read-button a {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background-color: #4a1c84;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 6px rgba(207, 160, 255, 0.3);
+      text-decoration: none;
+    }
+
+    .read-button a:hover {
+      background-color: #5e2aa8;
+      box-shadow: 0 0 10px rgba(207, 160, 255, 0.5), 0 0 6px rgba(255, 255, 255, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #1a1a1a;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lilith Scanlations</h1>
+    <nav>
+      <a href="#">Latest Updates</a>
+      <a href="#">Our Projects</a>
+      <a href="#">Join Us</a>
+      <a href="#">Suggestions</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Welcome to Lilith Scanlations!</h2>
+    <p>
+      Lilith is a non-profit group working on BL (Boys Love) manga, manhwa and manhua. We do not accept donations or payments, so please support the creators by purchasing the raws on the official platforms, such as Ridibooks, Bomtoon, Bookcube, Peanutoon, Lezhin, etc. You can learn about creating an account and getting adult access at some of these sites using the Buyer's Tutorial link in the above menu. If you have questions or the site you'd like to purchase from is not available there, you're welcome to ask us in our Discord server and we'll do our best to guide you!
+    </p>
+    <br />
+    <p>
+      The best way you can support our team is to join us!!! Refer to the recruitment page above for details. We really need Cleaner/Redrawers and Korean, Japanese Translators at this time~~
+    </p>
+    <br />
+    <p>
+      If you're unsure of something, you can refer to the frequently asked questions. If you see a bug or have issues with performance of the site, please reach out to us on Discord. We appreciate these reports.
+    </p>
+    <br />
+    <p>
+      <strong>Before You Proceed</strong><br />
+      DO NOT share this website or any projects, chapters or screenshots containing unofficial translations publicly. Especially on any social media platforms such as TikTok, Twitter, Facebook, Instagram, etc. <br />
+      DO NOT engage with the publisher, author or artist unless you have purchased from the official sources and do not reference any material taken from the unofficial translations. <br />
+      DO NOT repost our translations under any circumstances. Certain titles or updates may only be posted on this website while most will be made available on MangaDex with a slight delay.
+    </p>
+  </section>
+
+  <section class="latest-updates">
+    <div class="latest-update-card">
+      <img src="https://via.placeholder.com/400x180" alt="Chapter image">
+      <div class="latest-update-card-content">
+        <h3>Project 1 - Chapter 12</h3>
+        <p>He’s just a grumpy seme with a jellyfish tattoo...</p>
+        <div class="read-button">
+          <a href="#">Read</a>
+        </div>
+      </div>
+    </div>
+    <div class="latest-update-card">
+      <img src="https://via.placeholder.com/400x180" alt="Chapter image">
+      <div class="latest-update-card-content">
+        <h3>Project 2 - Chapter 5</h3>
+        <p>The guide who can't guide... and the esper who's in love with him.</p>
+        <div class="read-button">
+          <a href="#">Read</a>
+        </div>
+      </div>
+    </div>
+    <div class="latest-update-card">
+      <img src="https://via.placeholder.com/400x180" alt="Chapter image">
+      <div class="latest-update-card-content">
+        <h3>Project 3 - Chapter 28</h3>
+        <p>Taizi Gege’s true powers are revealed...</p>
+        <div class="read-button">
+          <a href="#">Read</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>All content are property of their original creators and publishers</p>
+
+  </footer>
+</body>
+</html>
