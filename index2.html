@@ -1,154 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lilith v2</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
+    /* Root colors */
+    :root {
+      --bg-color: #1b0e3a;
+      --primary-color: #7f5af0;
+      --accent-color: #f0c3fc;
+      --text-color: #f9f6ff;
+      --shadow-color: rgba(127, 90, 240, 0.4);
+      --star-color: #e9d5ff;
+    }
+
+    /* Reset */
+    * {
       margin: 0;
-      font-family: 'Karla', sans-serif;
-      background-color: #111;
-      color: #f4f4f4;
-      line-height: 1.6;
+      padding: 0;
+      box-sizing: border-box;
     }
 
+    body {
+      background: radial-gradient(circle at center, #2a1764 0%, #0d0623 90%);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 4rem;
+    }
+
+    /* Star sparkle animation */
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--star-color);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkle 3s infinite alternate ease-in-out;
+      box-shadow: 0 0 10px var(--star-color);
+    }
+    @keyframes sparkle {
+      0% {opacity: 0.3; transform: scale(0.6);}
+      50% {opacity: 1; transform: scale(1.2);}
+      100% {opacity: 0.3; transform: scale(0.6);}
+    }
+
+    /* Header */
     header {
-      background: linear-gradient(to right, #2a133d, #3a1c5e);
-      padding: 2rem;
       text-align: center;
+      padding: 2rem 1rem 1rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: var(--accent-color);
+      text-shadow: 0 0 10px var(--primary-color);
+      letter-spacing: 0.05em;
+      user-select: none;
     }
 
-    header h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.8rem;
-      color: #d4b3ff;
-      margin-bottom: 0.5rem;
-    }
-
+    /* Navigation */
     nav {
       display: flex;
       justify-content: center;
       gap: 2rem;
-      background-color: #1a1a1a;
-      padding: 1rem 0;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      font-weight: 600;
     }
-
     nav a {
-      color: #b088f9;
+      color: var(--accent-color);
       text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 30px;
+      background: transparent;
+      box-shadow: inset 0 0 0 2px var(--primary-color);
+      transition: all 0.3s ease;
       position: relative;
-      transition: color 0.3s ease;
-    }
-
-    nav a::after {
-      content: '';
-      display: block;
-      height: 2px;
-      background: #b088f9;
-      width: 0;
-      transition: width 0.3s;
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-    }
-
-    nav a:hover {
-      color: #d4b3ff;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .container {
-      padding: 2rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .updates {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .card {
-      background-color: #1f1f1f;
-      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
+    }
+    nav a::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      background: var(--primary-color);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+      z-index: -1;
+    }
+    nav a:hover {
+      color: #fff;
+      box-shadow: inset 0 0 10px 4px var(--accent-color);
+    }
+    nav a:hover::before {
+      width: 200%;
+      height: 500%;
     }
 
+    /* Latest Updates Section */
+    .updates {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0 1rem;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+    }
+    .card {
+      background: #3b2574;
+      border-radius: 15px;
+      width: 300px;
+      box-shadow: 0 0 15px var(--shadow-color);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px var(--accent-color);
     }
-
     .card img {
       width: 100%;
-      height: auto;
+      height: 180px;
+      object-fit: cover;
       display: block;
     }
-
     .card-content {
-      padding: 1rem;
-    }
-
-    .card-content h3 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      color: #d4b3ff;
-    }
-
-    .read-button {
-      display: inline-block;
-      margin-top: 0.75rem;
-      padding: 0.5rem 1rem;
-      background: #b088f9;
-      color: #111;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .read-button:hover {
-      background: #d4b3ff;
-    }
-
-    .welcome {
-      background: #181818;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      margin-bottom: 2rem;
-    }
-
-    .footer {
-      background-color: #1a1a1a;
+      padding: 1rem 1.25rem 1.5rem;
+      color: var(--accent-color);
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #888;
+    }
+    .card-content h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.7rem;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 0 5px var(--primary-color);
+    }
+    .card-content p {
+      font-weight: 500;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #d8c9fa;
+      text-shadow: 0 0 3px #573d91;
+    }
+    .read-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.45rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 0 10px var(--accent-color);
+      text-decoration: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .read-btn:hover {
+      background: var(--accent-color);
+      color: #1b0e3a;
+      box-shadow: 0 0 20px var(--primary-color);
     }
 
-    @media (max-width: 600px) {
-      nav {
+    /* Welcome Section */
+    .welcome {
+      max-width: 720px;
+      margin: 0 auto 4rem;
+      background: #341f77;
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 0 30px var(--shadow-color);
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #e3d5ff;
+      font-weight: 500;
+      text-align: center;
+      user-select: text;
+    }
+    .welcome h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+      text-shadow: 0 0 8px var(--primary-color);
+    }
+    .welcome h3 {
+      margin-top: 1.5rem;
+      color: #b48ddb;
+      font-weight: 700;
+      text-shadow: 0 0 5px #5c3a8a;
+    }
+    .welcome ul {
+      text-align: left;
+      max-width: 580px;
+      margin: 1rem auto 0;
+      padding-left: 1.25rem;
+      list-style-type: disc;
+      color: #cab9ff;
+    }
+    .welcome ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 1rem;
+      background: #230a49;
+      color: #bfaaff;
+      font-size: 0.9rem;
+      box-shadow: inset 0 1px 3px #3d2d76;
+      user-select: none;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
+    footer a {
+      color: var(--accent-color);
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .updates {
         flex-direction: column;
+        align-items: center;
+      }
+      nav {
         gap: 1rem;
       }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Lilith Scanlations</h1>
-  </header>
+  <!-- Sparkling stars background -->
+  <div class="star" style="top:10%; left:20%; animation-delay: 0s;"></div>
+  <div class="star" style="top:30%; left:40%; animation-delay: 1.5s;"></div>
+  <div class="star" style="top:50%; left:70%; animation-delay: 0.9s;"></div>
+  <div class="star" style="top:80%; left:10%; animation-delay: 2.3s;"></div>
+  <div class="star" style="top:25%; left:80%; animation-delay: 1.2s;"></div>
+
+  <header>Lilith Scanlations</header>
   <nav>
     <a href="#">Latest Updates</a>
     <a href="#">Our Projects</a>
@@ -156,47 +262,57 @@
     <a href="#">Suggestions</a>
   </nav>
 
-  <div class="container">
-    <section class="updates">
-      <div class="card">
-        <a href="#"><img src="https://placehold.co/400x220/3b2a50/FFF?text=Series+One" alt="Series One"></a>
-        <div class="card-content">
-          <h3>Series One — Chapter 1</h3>
-          <a class="read-button" href="#">Read</a>
-        </div>
+  <section class="updates">
+    <div class="card">
+      <img src="https://via.placeholder.com/300x180?text=Moonlight+Love" alt="Moonlight Love" />
+      <div class="card-content">
+        <h3>Moonlight Love</h3>
+        <p>Chapter 15 - Sailor's Heart</p>
+        <a href="#" class="read-btn">Read</a>
       </div>
-      <div class="card">
-        <a href="#"><img src="https://placehold.co/400x220/3b2a50/FFF?text=Series+Two" alt="Series Two"></a>
-        <div class="card-content">
-          <h3>Series Two — Chapter 2</h3>
-          <a class="read-button" href="#">Read</a>
-        </div>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/300x180?text=Star+Guardian" alt="Star Guardian" />
+      <div class="card-content">
+        <h3>Star Guardian</h3>
+        <p>Chapter 8 - Cosmic Secrets</p>
+        <a href="#" class="read-btn">Read</a>
       </div>
-      <div class="card">
-        <a href="#"><img src="https://placehold.co/400x220/3b2a50/FFF?text=Series+Three" alt="Series Three"></a>
-        <div class="card-content">
-          <h3>Series Three — Chapter 3</h3>
-          <a class="read-button" href="#">Read</a>
-        </div>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/300x180?text=Celestial+Wings" alt="Celestial Wings" />
+      <div class="card-content">
+        <h3>Celestial Wings</h3>
+        <p>Chapter 20 - Twilight Battle</p>
+        <a href="#" class="read-btn">Read</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="welcome">
-      <h2>Welcome to Lilith Scanlations!</h2>
-      <p>Lilith is a non-profit group working on BL (Boys Love/Yaoi) manhwa and mannhua. We do not accept donations or payments, 
-        so please support the creators by purchasing the raws on the official platforms.
-      <h3>Before You Proceed</h3>
-      <ul>
-        <li>DO NOT share this website or any projects, chapters or screenshots containing unofficial translations publicly. Especially on any social media platforms such as TikTok, Twitter, Facebook, Instagram, etc.</li>
-        <li>DO NOT engage with the publisher, author or artist unless you have purchased from the official sources and do not reference any material taken from the unofficial translations.</li>
-        <li>DO NOT repost our translations under any circumstances. Certain titles or updates may only be posted on this website while most will be made available on MangaDex with a slight delay.</li>
-      </ul>
-    </section>
-  </div>
+  <section class="welcome">
+    <h2>Welcome to Lilith Scanlations!</h2>
+    <p>
+      Lilith is a non-profit group working on BL (Boys Love) manga, manhwa, and manhua. We do not accept donations or payments, so please support the creators by purchasing the raws on official platforms like Ridibooks, Bomtoon, Bookcube, Peanutoon, Lezhin, etc.
+    </p>
+    <p>
+      You can learn about creating an account and getting adult access at some of these sites using the Buyer's Tutorial link in the above menu. If you have questions or the site you'd like to purchase from is not available there, you're welcome to ask us in our Discord server and we'll do our best to guide you!
+    </p>
+    <p>
+      The best way you can support our team is to join us! Refer to the recruitment page above for details. We really need Cleaner/Redrawers and Korean, Japanese Translators at this time~~
+    </p>
+    <p>
+      If you're unsure of something, you can refer to the frequently asked questions. If you see a bug or have issues with performance of the site, please reach out to us on Discord. We appreciate these reports.
+    </p>
+    <h3>Before You Proceed</h3>
+    <ul>
+      <li>DO NOT share this website or any projects, chapters, or screenshots containing unofficial translations publicly on social media.</li>
+      <li>DO NOT engage with the publisher, author, or artist unless you have purchased from the official sources and do not reference unofficial materials.</li>
+      <li>DO NOT repost our translations under any circumstances. Certain titles may only be posted here while others will appear on MangaDex with a delay.</li>
+    </ul>
+  </section>
 
-  <div class="footer">
+  <footer>
  All content are property of their original creators and publishers
-  </div>
+  </footer>
 </body>
-
 </html>
