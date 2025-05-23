@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lilith Scanlations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Josefin+Sans&display=swap" rel="stylesheet">
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Josefin Sans', sans-serif;
+        background-color: #fdf7f2;
+        color: #333;
+        line-height: 1.6;
+        background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      }
+
+      header {
+        background: linear-gradient(to right, #94b49f, #c4d7b2);
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      header h1 {
+        font-family: 'Gloock', serif;
+        font-size: 3rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1.1rem;
+        position: relative;
+      }
+
+      nav a::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #fff;
+        transition: width 0.3s;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      .updates {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 2rem 1rem;
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .update-card {
+        background-color: #fff;
+        border: 2px solid #c4d7b2;
+        border-radius: 12px;
+        width: 300px;
+        margin: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .update-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .update-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .update-card .info {
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .update-card .info h3 {
+        color: #50623a;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .read-btn {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        background-color: #94b49f;
+        color: #fff;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .read-btn:hover {
+        background-color: #789d84;
+      }
+
+      .welcome {
+        padding: 2rem 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .welcome h2 {
+        font-family: 'Gloock', serif;
+        color: #6c584c;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1.5rem 1rem;
+        background-color: #94b49f;
+        color: #fff;
+        margin-top: 2rem;
+      }
+
+      footer a {
+        color: #fff;
+        margin: 0 0.5rem;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Lilith Scanlations</h1>
+      <nav>
+        <a href="#">Latest Updates</a>
+        <a href="#">Our Projects</a>
+        <a href="#">Join Us</a>
+        <a href="#">Suggestions</a>
+      </nav>
+    </header>
+
+    <section class="updates">
+      <div class="update-card">
+        <img src="https://placehold.co/300x180" alt="Chapter Thumbnail">
+        <div class="info">
+          <h3>Viper – Chapter 1</h3>
+          <a href="#" class="read-btn">Read</a>
+        </div>
+      </div>
+      <div class="update-card">
+        <img src="https://placehold.co/300x180" alt="Chapter Thumbnail">
+        <div class="info">
+          <h3>Crimson Petal – Chapter 5</h3>
+          <a href="#" class="read-btn">Read</a>
+        </div>
+      </div>
+      <div class="update-card">
+        <img src="https://placehold.co/300x180" alt="Chapter Thumbnail">
+        <div class="info">
+          <h3>Moonlight Song – Chapter 12</h3>
+          <a href="#" class="read-btn">Read</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="welcome">
+      <h2>Welcome to Lilith Scanlations!</h2>
+      <p>Lilith is a non-profit group working on BL (Boys Love) manga, manhwa and manhua. We do not accept donations or payments, so please support the creators by purchasing the raws on the official platforms, such as Ridibooks, Bomtoon, Bookcube, Peanutoon, Lezhin, etc. You can learn about creating an account and getting adult access at some of these sites using the Buyer's Tutorial link in the above menu. If you have questions or the site you'd like to purchase from is not available there, you're welcome to ask us in our Discord server and we'll do our best to guide you!</p>
+      <br>
+      <p>The best way you can support our team is to join us!!! Refer to the recruitment page above for details. We really need Cleaner/Redrawers and Korean, Japanese Translators at this time~~</p>
+
+      <h3>Before You Proceed</h3>
+      <p><strong>DO NOT</strong> share this website or any projects, chapters or screenshots containing unofficial translations publicly. Especially on any social media platforms such as TikTok, Twitter, Facebook, Instagram, etc.<br>
+      <strong>DO NOT</strong> engage with the publisher, author or artist unless you have purchased from the official sources and do not reference any material taken from the unofficial translations.<br>
+      <strong>DO NOT</strong> repost our translations under any circumstances. Certain titles or updates may only be posted on this website while most will be made available on MangaDex with a slight delay.</p>
+    </section>
+
+    <footer>
+      <p>All content are property of their original creators and publishers.</p>
+    </footer>
+  </body>
+</html>
